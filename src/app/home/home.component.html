@@ -1,0 +1,11 @@
+<main>
+  <div class="search-wrapper">
+    <input #search type="text" id="search" placeholder="paste repo url" />
+    <button
+      [disabled]="search?.value?.lenght === 0"
+      (click)="onGoButtonClick(search.value)"
+    >
+      go
+    </button>
+  </div>
+</main>

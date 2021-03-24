@@ -1,0 +1,27 @@
+app-home {
+  width: 100%;
+
+  main {
+    background-color: #399eff;
+    height: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+  }
+
+  .search-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  #search {
+    font-size: 1.2rem;
+    width: 30rem;
+  }
+
+  button {
+    margin-left: 0.5rem;
+  }
+}
