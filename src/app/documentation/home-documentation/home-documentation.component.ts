@@ -1,8 +1,9 @@
-import { ChangeDetectionStrategy, Component, ElementRef, OnInit, ViewChild, ViewChildren, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, HostListener, OnInit, ViewChild, ViewChildren, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import * as hljs from 'highlight.js'
+import { GhRepoService } from 'src/app/services/gh-repo.service';
 
 @Component({
   selector: 'app-home-documentation',
@@ -14,12 +15,20 @@ import * as hljs from 'highlight.js'
 export class HomeDocumentationComponent implements OnInit {
   @ViewChild('htmlContainer') codeElement: ElementRef;
   html$: Observable<string>;
-  constructor(private activatedRoute: ActivatedRoute) { }
+
+  constructor(private activatedRoute: ActivatedRoute,
+    public ghRepoService: GhRepoService) { }
 
   ngOnInit(): void {
     this.html$ = this.activatedRoute.data.pipe(map(d => d.readme));
   }
 
+  @HostListener('click', ['$event'])
+  onClick(event: any) {
+    if (event.target?.href?.includes('#')) {
+      event.preventDefault();
+    }
+  }
 
 
   ngAfterViewInit() {

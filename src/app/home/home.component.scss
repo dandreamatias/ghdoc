@@ -2,8 +2,7 @@ app-home {
   width: 100%;
 
   main {
-    background-color: #399eff;
-    height: 60%;
+    height: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,17 +10,49 @@ app-home {
   }
 
   .search-wrapper {
-    width: 100%;
     display: flex;
     justify-content: center;
+    align-items: baseline;
+    height: 4rem;
+    color: #3c4043;
+    width: 40rem;
+    border-radius: 5rem;
+    box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%),
+      0 1px 3px 1px rgb(60 64 67 / 15%);
+    background-color: #fff;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .btn-wrapper {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    width: 5rem;
   }
 
   #search {
-    font-size: 1.2rem;
-    width: 30rem;
+    font: 500 1rem/1.5rem Roboto, Arial, sans-serif;
+    letter-spacing: 0.0125em;
+    padding: 0 0px 0 24px;
+    height: 100%;
+    background-color: #fff;
   }
 
-  button {
-    margin-left: 0.5rem;
+  .search-btn {
+    width: 14px;
+    border-radius: 14px;
+    height: 14px;
+    border: 2px solid #757575;
+    transform: rotate(45deg);
+  }
+
+  .search-btn span {
+    position: absolute;
+    left: calc(100% + 2px);
+    top: calc(50% - 1px);
+    background-color: #757575;
+    height: 2px;
+    width: 9px;
   }
 }

@@ -2,11 +2,9 @@
 <main>
   <aside>
     <ul>
-      <li>helllo</li>
-      <li>helllo</li>
-      <li>helllo</li>
-      <li>helllo</li>
-      <li>helllo</li>
+      <li *ngFor="let voice of ghRepoService.menuItems$ | async">
+        {{ voice }}
+      </li>
     </ul>
   </aside>
 

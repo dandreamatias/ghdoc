@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Router } from '@angular/router';
 import { GithubApiService } from '../services/github-api.service';
 import { GITHUB_URL } from '../utils/constants';
 
@@ -10,7 +11,7 @@ import { GITHUB_URL } from '../utils/constants';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeComponent implements OnInit {
-  constructor(private githubApiService: GithubApiService) { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -18,8 +19,7 @@ export class HomeComponent implements OnInit {
 
   onGoButtonClick(url: string) {
     const [username, repo] = this.parseUrl(url)
-    this.githubApiService.getMarckDown('hello world').subscribe(console.log)
-    this.githubApiService.getReadme(username, repo).subscribe(console.log)
+    this.router.navigate([username, repo])
   }
 
   private parseUrl(url: string): string[] {
