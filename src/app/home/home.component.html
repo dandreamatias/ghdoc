@@ -1,11 +1,16 @@
 <main>
-  <div class="search-wrapper">
-    <input #search type="text" id="search" placeholder="paste repo url" />
-    <button
-      [disabled]="search?.value?.lenght === 0"
-      (click)="onGoButtonClick(search.value)"
-    >
-      go
-    </button>
+  <div class="search-wrapper" >
+    <input
+      autocomplete="false"
+      #search
+      type="text"
+      id="search"
+      placeholder="paste repo url"
+    />
+    <div class="btn-wrapper"(click)="onGoButtonClick(search.value)" >
+      <div class="search-btn" type="submit">
+        <span></span>
+      </div>
+    </div>
   </div>
 </main>
