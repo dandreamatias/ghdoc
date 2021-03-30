@@ -1,19 +1,7 @@
 app-home-documentation {
   width: 100%;
-
-  nav {
-    height: 3rem;
-    position: absolute;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    background-color: #104b8f;
-    padding: 0 1rem;
-    border-bottom: 1px solid #75757557;
-
-    h1 {
-      color: #f3f3f3;
-    }
+  path {
+    color: white !important;
   }
 
   main {

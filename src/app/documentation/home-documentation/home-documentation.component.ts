@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import * as hljs from 'highlight.js'
 import { GhRepoService } from 'src/app/services/gh-repo.service';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-home-documentation',
@@ -15,6 +16,7 @@ import { GhRepoService } from 'src/app/services/gh-repo.service';
 export class HomeDocumentationComponent implements OnInit {
   @ViewChild('htmlContainer') codeElement: ElementRef;
   html$: Observable<string>;
+  faCoffee = faCoffee;
 
   constructor(private activatedRoute: ActivatedRoute,
     public ghRepoService: GhRepoService) { }

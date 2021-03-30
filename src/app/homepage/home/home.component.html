@@ -1,0 +1,55 @@
+<main>
+  <div class="search-wrapper">
+    <input
+      autocomplete="false"
+      #search
+      type="text"
+      (input)="onInputType($event)"
+      id="search"
+      placeholder="search for a repository"
+    />
+    <div class="btn-wrapper" (click)="onGoButtonClick(search.value)">
+      <fa-icon class="yellow" [icon]="iconSearch"></fa-icon>
+    </div>
+    <ul *ngIf="showRes">
+      <li
+        *ngFor="let repo of repositories"
+        (click)="onResultClick(repo.owner, repo.name)"
+        class="result-voice"
+      >
+        <span>{{ repo.owner }} / {{ repo.name }} </span>
+        <span>
+          {{ repo.stars }} <fa-icon class="yellow" [icon]="iconStar"></fa-icon>
+        </span>
+      </li>
+    </ul>
+  </div>
+</main>
+<div class="repo-container">
+  <section>
+    <div class="card">
+      <h2>class-transformer</h2>
+      <b>3.4k <fa-icon class="yellow" [icon]="iconStar"></fa-icon></b>
+    </div>
+    <div class="card">
+      <h2>react-js</h2>
+      <b>93.4k <fa-icon class="yellow" [icon]="iconStar"></fa-icon></b>
+    </div>
+    <div class="card">
+      <h2>angular</h2>
+      <b>33.4k <fa-icon class="yellow" [icon]="iconStar"></fa-icon></b>
+    </div>
+    <div class="card">
+      <h2>svelte-js</h2>
+      <b>23.4k <fa-icon class="yellow" [icon]="iconStar"></fa-icon></b>
+    </div>
+    <div class="card">
+      <h2>prime-ng</h2>
+      <b>3.4k <fa-icon class="yellow" [icon]="iconStar"></fa-icon></b>
+    </div>
+    <div class="card">
+      <h2>class-transformer</h2>
+      <b>3.4k <fa-icon class="yellow" [icon]="iconStar"></fa-icon></b>
+    </div>
+  </section>
+</div>

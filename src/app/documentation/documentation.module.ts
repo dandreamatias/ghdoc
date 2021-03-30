@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { DocumentationRoutingModule } from './documentation-routing.module';
 import { HomeDocumentationComponent } from './home-documentation/home-documentation.component';
 import { SharedModule } from '../shared.module';

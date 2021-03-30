@@ -1,0 +1,119 @@
+app-home {
+  width: 100%;
+  padding-top: 3rem;
+
+  main {
+    height: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+  }
+
+  .search-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 4rem;
+    position: relative;
+    color: #3c4043;
+    width: 40rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%),
+      0 1px 3px 1px rgb(60 64 67 / 15%);
+    background-color: #fff;
+    cursor: pointer;
+
+    path {
+      color: #757575;
+    }
+  }
+
+  .btn-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 4rem;
+    height: 4rem;
+  }
+
+  #search {
+    font: 500 1rem/1.5rem Roboto, Arial, sans-serif;
+    letter-spacing: 0.0125em;
+    padding: 0 0px 0 24px;
+    border-radius: 8px;
+    height: 100%;
+    background-color: #fff;
+  }
+
+  .result-voice {
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #d1d1d1;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+
+  .result-voice:hover {
+    background-color: #fafafa;
+  }
+  .search-wrapper {
+    ul {
+      position: absolute;
+      top: 102%;
+      z-index: 10;
+      max-height: 25rem;
+      overflow-y: auto;
+      overflow-x: hidden;
+      box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%),
+        0 1px 3px 1px rgb(60 64 67 / 15%);
+      width: 40rem;
+      margin: 0 auto;
+      list-style: none;
+      border: 1px solid #7575754f;
+      border-radius: 8px;
+      background-color: #fff;
+
+      path {
+        color: #ffdf00;
+      }
+    }
+  }
+
+  .repo-container {
+    height: 60%;
+    width: 100%;
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+  }
+
+  section {
+    width: 60rem;
+    min-height: 30rem;
+    color: #7575751f;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .card {
+    border: 1px solid;
+    padding: 1rem;
+    font-weight: normal;
+    width: 30%;
+    height: 10rem;
+    border-radius: 8px;
+    border-color: #d8dada;
+    cursor: pointer;
+    color: #757575;
+
+    h2 {
+      font-weight: normal;
+      font-size: 1.5rem;
+      text-transform: capitalize;
+      color: #757575;
+    }
+  }
+}

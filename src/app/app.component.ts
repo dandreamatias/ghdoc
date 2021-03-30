@@ -4,10 +4,12 @@ import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/
   selector: 'app-root',
   template: `
     <app-spinner></app-spinner>
+    <app-navbar></app-navbar>
     <router-outlet></router-outlet>
   `,
   styleUrls: ['./app.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
 }
