@@ -7,13 +7,22 @@ import { MaskService } from '../services/mask.service';
 
 @Injectable()
 export class GlobalHttpInterceptor implements HttpInterceptor {
+  private counter = 0;
+
   constructor(private injector: Injector, private ngZone: NgZone, private maskService: MaskService) { }
 
+
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    this.maskService.show();
-    console.log('intercept')
+    if (this.counter === 0) {
+      this.maskService.setHttpProgressStatus(true);
+    }
+    this.counter++;
     return next.handle(request).pipe(
-      finalize(() => this.maskService.hide())
-    );
+      finalize(() => {
+        this.counter--;
+        if (this.counter === 0) {
+          this.maskService.setHttpProgressStatus(false);
+        }
+      }));
   }
 }

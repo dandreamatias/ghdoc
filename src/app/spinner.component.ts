@@ -3,13 +3,11 @@ import { MaskService } from './services/mask.service';
 
 @Component({
   selector: 'app-spinner',
-  template: `<div [ngClass]="{hide: maskService.visible}"></div>`,
+  template: `<div *ngIf="maskService.httpProgress() | async"></div>`,
   styleUrls: ['./spinner.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SpinnerComponent {
-
   constructor(public maskService: MaskService) { }
-
-
 }

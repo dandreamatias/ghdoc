@@ -15,7 +15,7 @@ export class Resolver implements Resolve<string> {
     const [username, repo] = state.url.slice(1).split('/');
     return this.ghApi.getReadme(username, repo).pipe(
       map(data => this.ghRepo.parseMd(data)),
-      switchMap(sourceValue => this.ghApi.getMarckDown(sourceValue))
+      switchMap(sourceValue => this.ghApi.getMarkDown(sourceValue))
     )
   }
 }

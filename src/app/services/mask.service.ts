@@ -1,24 +1,19 @@
 import { Injectable } from '@angular/core';
+import { Observable, ReplaySubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MaskService {
-  private httpCounter = 0;
+  private httpLoading$ = new ReplaySubject<boolean>(1);
 
-  show() {
-    this.httpCounter++;
+  constructor() { }
+
+  httpProgress(): Observable<boolean> {
+    return this.httpLoading$.asObservable();
   }
 
-  get visible() {
-    console.log(this.httpCounter)
-    return this.httpCounter === 0;
-  }
-
-  hide() {
-    this.httpCounter--;
-    if (this.httpCounter < 0) {
-      this.httpCounter = 0;
-    }
+  setHttpProgressStatus(inprogess: boolean) {
+    this.httpLoading$.next(inprogess);
   }
 }
