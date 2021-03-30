@@ -8,8 +8,7 @@ import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/
     <router-outlet></router-outlet>
   `,
   styleUrls: ['./app.component.scss'],
-  encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
 }
