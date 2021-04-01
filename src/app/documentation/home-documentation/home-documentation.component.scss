@@ -56,6 +56,7 @@ app-home-documentation {
 
   aside {
     overflow-y: auto;
+    overflow-x: hidden;
     background-color: #f2f2f2;
 
     ul {
@@ -69,6 +70,7 @@ app-home-documentation {
       margin-left: 4px;
       cursor: pointer;
       max-width: 18rem;
+      min-width: 12rem;
       overflow: hidden;
       text-overflow: ellipsis;
     }

@@ -5,9 +5,8 @@ app-navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #108f6f;
+  background-color: var(--main-color);
   padding: 0 1rem;
-  border-bottom: 1px solid #75757557;
 
   path {
     color: #f3f3f3;

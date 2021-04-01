@@ -18,4 +18,6 @@ export class Resolver implements Resolve<string> {
       switchMap(sourceValue => this.ghApi.getMarkDown(sourceValue))
     )
   }
+
+
 }

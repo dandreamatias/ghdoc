@@ -21,7 +21,10 @@ export class GithubApiService {
   }
 
   public getMarkDown(stringMd): Observable<string> {
-    return this.http.post(GITHUB_API_URL + 'markdown', { text: stringMd }, {
+    return this.http.post(GITHUB_API_URL + 'markdown', {
+      text: stringMd, "mode": "markdown",
+      "context": "none"
+    }, {
       responseType: 'text',
       headers: {
         'Content-Type': 'text/x-markdown',
