@@ -43,7 +43,8 @@ app-home {
     padding: 0 0px 0 24px;
     border-radius: 8px;
     height: 100%;
-    background-color: #fff;
+    border: none;
+    width: 100%;
   }
 
   .result-voice {
@@ -114,6 +115,51 @@ app-home {
       font-size: 1.5rem;
       text-transform: capitalize;
       color: #757575;
+    }
+  }
+
+  .tooltip {
+    position: relative;
+  }
+
+  .tooltip:hover::before,
+  .tooltip:hover::after {
+    position: absolute;
+    z-index: 9999;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    box-sizing: border-box;
+    animation: basic 0.4s forwards 0.2s;
+  }
+
+  .tooltip:hover::before {
+    content: attr(data-tooltip);
+    bottom: calc(100% + 0.5rem);
+    width: 50%;
+    background-color: rgb(56, 56, 56);
+    border-radius: 3px;
+    transition: all 0.2s;
+    color: white;
+    padding: 1rem;
+  }
+
+  .tooltip:hover::after {
+    content: "";
+    bottom: calc(100%);
+    width: 0;
+    height: 0;
+    border-left: 0.5rem solid transparent;
+    border-right: 0.5rem solid transparent;
+    border-top: 0.5rem solid rgb(56, 56, 56);
+  }
+
+  @keyframes basic {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
     }
   }
 }

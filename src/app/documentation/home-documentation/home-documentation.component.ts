@@ -1,9 +1,11 @@
 import { ChangeDetectionStrategy, Component, ElementRef, HostListener, OnInit, ViewChild, ViewChildren, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, merge } from 'rxjs';
 import { map } from 'rxjs/operators';
 import * as hljs from 'highlight.js'
 import { GhRepoService } from 'src/app/services/gh-repo.service';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { MenuService } from 'src/app/services/menu.service';
 
 @Component({
   selector: 'app-home-documentation',
@@ -14,13 +16,17 @@ import { GhRepoService } from 'src/app/services/gh-repo.service';
 })
 export class HomeDocumentationComponent implements OnInit {
   @ViewChild('htmlContainer') codeElement: ElementRef;
-  html$: Observable<string>;
+  html$: Observable<SafeHtml>;
+  currentText: string
 
   constructor(private activatedRoute: ActivatedRoute,
+    private sanitizer: DomSanitizer,
+    public menuService: MenuService,
     public ghRepoService: GhRepoService) { }
 
   ngOnInit(): void {
-    this.html$ = this.activatedRoute.data.pipe(map(d => d.readme));
+    this.html$ = merge(this.activatedRoute.data.pipe(map(d => (d.readme as string))), this.ghRepoService.pages$)
+      .pipe(map(d => this.sanitizer.bypassSecurityTrustHtml(d)));
   }
 
   @HostListener('click', ['$event'])
@@ -30,6 +36,13 @@ export class HomeDocumentationComponent implements OnInit {
     }
   }
 
+  onMenuClick(menu) {
+    this.currentText = menu;
+    if (document.body.clientWidth < 900) {
+      this.menuService.updatePosition(false);
+    }
+    this.ghRepoService.setPage(menu);
+  }
 
   ngAfterViewInit() {
     this.codeElement.nativeElement.querySelectorAll('pre').forEach(element => {
