@@ -15,17 +15,7 @@ export class Resolver implements Resolve<string> {
     const [username, repo] = state.url.slice(1).split('/');
     this.ghRepo.userName = username;
     this.ghRepo.repositoryName = repo;
-
-    if (localStorage.getItem(`${username}/${repo}`)) {
-      return of(localStorage.getItem(`${username}/${repo}`)).pipe(
-        map(data => this.ghRepo.parseMd(data)),
-        map(sourceValue => marked(sourceValue) as string)
-      )
-    }
-
-
     return this.ghApi.getReadme(username, repo).pipe(
-      tap(data => localStorage.setItem(`${username}/${repo}`, data)),
       map(data => this.ghRepo.parseMd(data)),
       map(sourceValue => marked(sourceValue) as string)
     )
