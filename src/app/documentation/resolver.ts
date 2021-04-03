@@ -1,21 +1,25 @@
 import { Injectable } from '@angular/core';
-import { Router, Resolve, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router';
-import { Observable } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
+import { Resolve, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router';
+import { Observable, of } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
 import { GhRepoService } from '../services/gh-repo.service';
 import { GithubApiService } from '../services/github-api.service';
+import * as marked from "marked";
 
 @Injectable()
 export class Resolver implements Resolve<string> {
   constructor(private ghApi: GithubApiService,
-    private router: Router,
     private ghRepo: GhRepoService) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<string> {
     const [username, repo] = state.url.slice(1).split('/');
+    this.ghRepo.userName = username;
+    this.ghRepo.repositoryName = repo;
     return this.ghApi.getReadme(username, repo).pipe(
       map(data => this.ghRepo.parseMd(data)),
-      switchMap(sourceValue => this.ghApi.getMarkDown(sourceValue))
+      map(sourceValue => marked(sourceValue) as string)
     )
   }
+
+
 }

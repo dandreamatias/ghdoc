@@ -1,13 +1,17 @@
 <main>
-  <aside>
+  <aside [class]="(menuService.menuOpen$ | async) ? 'open' : 'closed'">
     <ul>
-      <li *ngFor="let voice of ghRepoService.menuItems$ | async">
+      <li
+        *ngFor="let voice of ghRepoService.menuItems$ | async"
+        (click)="onMenuClick(voice)"
+        [ngClass]="{ selected: voice === currentText }"
+      >
         {{ voice }}
       </li>
     </ul>
   </aside>
 
-  <section>
-    <div #htmlContainer id="html-container" [innerHTML]="html$ | async"></div>
+  <section #htmlContainer>
+    <div id="html-container" [innerHTML]="html$ | async"></div>
   </section>
 </main>

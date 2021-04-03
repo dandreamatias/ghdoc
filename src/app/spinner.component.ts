@@ -3,7 +3,9 @@ import { MaskService } from './services/mask.service';
 
 @Component({
   selector: 'app-spinner',
-  template: `<div *ngIf="maskService.httpProgress() | async"></div>`,
+  template: `<div class="spinner-container" *ngIf="maskService.httpProgress() | async">
+    <div class="spinner"></div>
+  </div>`,
   styleUrls: ['./spinner.component.scss'],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush

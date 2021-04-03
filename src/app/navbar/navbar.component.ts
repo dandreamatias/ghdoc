@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { Router } from '@angular/router';
-import { faHome, faCog } from '@fortawesome/free-solid-svg-icons';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { GhRepoService } from '../services/gh-repo.service';
+import { MenuService } from '../services/menu.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,16 +10,20 @@ import { faHome, faCog } from '@fortawesome/free-solid-svg-icons';
   encapsulation: ViewEncapsulation.None
 })
 export class NavbarComponent implements OnInit {
-  iconHome = faHome;
-  iconSetting = faCog;
+  iconMenu = faBars;
 
-  constructor(private router: Router) { }
+  constructor(private menuService: MenuService, public ghRepoService: GhRepoService) { }
 
   ngOnInit(): void {
   }
 
-  onHomeClick() {
-    this.router.navigate([''])
+  onMenuClick() {
+    const isOpen = this.menuService.isOpen;
+    this.menuService.updatePosition(!isOpen)
+  }
+
+  onGHClick() {
+    (window as any).open(this.ghRepoService.url, "_blank")
   }
 
 }
