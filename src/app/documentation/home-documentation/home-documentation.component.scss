@@ -11,6 +11,7 @@ app-home-documentation {
     padding-top: 3rem;
     height: 100%;
     transition: all 0.3s;
+    background-color: white;
     padding-right: 18rem;
     padding-left: 18rem;
   }
@@ -45,6 +46,7 @@ app-home-documentation {
     }
     img {
       max-width: 100%;
+      width: 100%;
     }
 
     p > code,
@@ -60,7 +62,7 @@ app-home-documentation {
   aside {
     overflow-y: auto;
     overflow-x: hidden;
-    background-color: #f2f2f2;
+    background-color: #f3f2f1;
     position: absolute;
     height: 100%;
     width: 18rem;

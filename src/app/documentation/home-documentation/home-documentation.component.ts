@@ -27,8 +27,12 @@ export class HomeDocumentationComponent implements OnInit {
   ngOnInit(): void {
     this.html$ = merge(this.activatedRoute.data.pipe(map(d => (d.readme as string))), this.ghRepoService.pages$)
       .pipe(
+        map(data => new DOMParser().parseFromString(data, 'text/html')),
+        map(dom => {
+          dom.body.querySelectorAll('pre').forEach(el => (hljs as any).highlightElement(el))
+          return dom.body.outerHTML;
+        }),
         map(d => this.sanitizer.bypassSecurityTrustHtml(d)),
-        tap(dom => setTimeout(() => this.codeElement.nativeElement.querySelectorAll('pre').forEach(element => (hljs as any).highlightElement(element))))
       );
   }
 
