@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, ElementRef, HostListener, OnInit, ViewChild, ViewChildren, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, merge } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import * as hljs from 'highlight.js'
 import { GhRepoService } from 'src/app/services/gh-repo.service';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
@@ -26,7 +26,10 @@ export class HomeDocumentationComponent implements OnInit {
 
   ngOnInit(): void {
     this.html$ = merge(this.activatedRoute.data.pipe(map(d => (d.readme as string))), this.ghRepoService.pages$)
-      .pipe(map(d => this.sanitizer.bypassSecurityTrustHtml(d)));
+      .pipe(
+        map(d => this.sanitizer.bypassSecurityTrustHtml(d)),
+        tap(dom => setTimeout(() => this.codeElement.nativeElement.querySelectorAll('pre').forEach(element => (hljs as any).highlightElement(element))))
+      );
   }
 
   @HostListener('click', ['$event'])
@@ -43,11 +46,4 @@ export class HomeDocumentationComponent implements OnInit {
     }
     this.ghRepoService.setPage(menu);
   }
-
-  ngAfterViewInit() {
-    this.codeElement.nativeElement.querySelectorAll('pre').forEach(element => {
-      (hljs as any).highlightElement(element);
-    });
-  }
-
 }
