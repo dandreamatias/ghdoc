@@ -7,8 +7,8 @@ app-home-documentation {
   main {
     display: flex;
     width: 100%;
-    overflow: hidden;
     padding-top: 3rem;
+    overflow-y: auto;
     height: 100%;
     transition: all 0.3s;
     background-color: white;
@@ -93,7 +93,6 @@ app-home-documentation {
 
   section {
     width: 100%;
-    overflow: auto;
   }
   .open {
     left: 0;

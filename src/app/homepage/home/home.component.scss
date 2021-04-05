@@ -2,6 +2,17 @@ app-home {
   width: 100%;
   padding-top: 3rem;
 
+  h1 {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  small {
+    text-align: center;
+    margin-top: 3rem;
+    display: block;
+  }
+
   main {
     height: 40%;
     display: flex;

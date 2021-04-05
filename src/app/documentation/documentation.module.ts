@@ -5,11 +5,13 @@ import { HomeDocumentationComponent } from './home-documentation/home-documentat
 import { SharedModule } from '../shared.module';
 import { Resolver } from './resolver';
 import { RouterModule } from '@angular/router';
+import { GhPageComponent } from './home-documentation/gh-page/gh-page.component';
 
 
 @NgModule({
   declarations: [
-    HomeDocumentationComponent
+    HomeDocumentationComponent,
+    GhPageComponent
   ],
   imports: [
     CommonModule,
