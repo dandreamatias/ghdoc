@@ -1,15 +1,9 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
-<<<<<<< HEAD
 import * as marked from "marked";
 import { GITHUB_URL } from '../utils/constants';
 import * as hljs from 'highlight.js'
 import { ActivatedRoute } from '@angular/router';
-=======
-import { map } from 'rxjs/operators';
-import * as marked from "marked";
-import { GITHUB_URL } from '../utils/constants';
->>>>>>> main
 
 @Injectable({
   providedIn: 'root'
@@ -18,16 +12,7 @@ export class GhRepoService {
   private menuItemsSubject = new BehaviorSubject<string[]>([]);
   private pagesSubject = new BehaviorSubject<string>('');
   public readonly menuItems$ = this.menuItemsSubject.asObservable();
-<<<<<<< HEAD
   public readonly pages$ = this.pagesSubject.asObservable();
-=======
-  private pages = new Map<string, string>()
-  private pagesSubject = new Subject<string>();
-  public readonly pages$ = this.pagesSubject.asObservable()
-    .pipe(map(sourceValue => marked(sourceValue) as string));
-  repositoryName: string;
-  userName: string
->>>>>>> main
 
   private pages = new Map<string, string>()
   repositoryName: string;
