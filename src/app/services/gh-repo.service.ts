@@ -1,26 +1,26 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
-import { map } from 'rxjs/operators';
 import * as marked from "marked";
 import { GITHUB_URL } from '../utils/constants';
+import * as hljs from 'highlight.js'
+import { ActivatedRoute } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GhRepoService {
   private menuItemsSubject = new BehaviorSubject<string[]>([]);
+  private pagesSubject = new BehaviorSubject<string>('');
   public readonly menuItems$ = this.menuItemsSubject.asObservable();
+  public readonly pages$ = this.pagesSubject.asObservable();
+
   private pages = new Map<string, string>()
-  private pagesSubject = new Subject<string>();
-  public readonly pages$ = this.pagesSubject.asObservable()
-    .pipe(map(sourceValue => marked(sourceValue) as string));
   repositoryName: string;
   userName: string
 
   constructor() { }
 
-
-  public parseMd(readme: string): string {
+  public parseMd(readme: string): void {
     const raw: string[] = readme.split('\n');
     const settings = []
     if (raw[0].includes('<!--- gh-md')) {
@@ -34,13 +34,17 @@ export class GhRepoService {
     }
     const titles = settings.filter(setting => this.startWith(setting.conf, 'title'));
     const color = settings.filter(setting => this.startWith(setting.conf, 'color'));
+
     document.documentElement.style.setProperty(`--main-color`, this.getConfValue(color[0]));
+
     titles.forEach((setting, idx) => {
       const title = this.getConfValue(setting);
-      this.pages.set(title, raw.slice(setting.index, titles[idx + 1] ? titles[idx + 1].index : raw.length).join('\n'))
+      const content = raw.slice(setting.index, titles[idx + 1] ? titles[idx + 1].index : raw.length).join('\n');
+      const dom = new DOMParser().parseFromString(marked(content) as string, 'text/html');
+      dom.body.querySelectorAll('pre').forEach(el => (hljs as any).highlightElement(el));
+      this.pages.set(title, dom.body.outerHTML)
     })
-    this.menuItemsSubject.next(titles.map(title => this.getConfValue(title)));
-    return this.pages.get(titles.map(title => this.getConfValue(title))[0]);
+    this.menuItemsSubject.next([...this.pages.keys()]);
   }
 
   getConfValue(setting): string {

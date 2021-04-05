@@ -7,10 +7,11 @@ app-home-documentation {
   main {
     display: flex;
     width: 100%;
-    overflow: hidden;
     padding-top: 3rem;
+    overflow-y: auto;
     height: 100%;
     transition: all 0.3s;
+    background-color: white;
     padding-right: 18rem;
     padding-left: 18rem;
   }
@@ -45,6 +46,7 @@ app-home-documentation {
     }
     img {
       max-width: 100%;
+      width: 100%;
     }
 
     p > code,
@@ -60,7 +62,7 @@ app-home-documentation {
   aside {
     overflow-y: auto;
     overflow-x: hidden;
-    background-color: #f2f2f2;
+    background-color: #f3f2f1;
     position: absolute;
     height: 100%;
     width: 18rem;
@@ -91,7 +93,45 @@ app-home-documentation {
 
   section {
     width: 100%;
-    overflow: auto;
+  }
+  .open {
+    left: 0;
+  }
+
+  .closed {
+    left: -100%;
+  }
+  @media screen and (max-width: 1280px) {
+    main {
+      padding-right: 0rem;
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    aside {
+      height: 100%;
+      left: -100%;
+      width: 100%;
+      background-color: white;
+
+      li {
+        text-align: center;
+        max-width: 100%;
+      }
+    }
+
+    main {
+      padding-left: 0rem;
+    }
+    aside.open {
+      position: absolute;
+    }
+
+    #html-container {
+      h1 {
+        margin: 1rem 0;
+      }
+    }
   }
   .open {
     left: 0;
