@@ -133,4 +133,43 @@ app-home-documentation {
       }
     }
   }
+  .open {
+    left: 0;
+  }
+
+  .closed {
+    left: -100%;
+  }
+  @media screen and (max-width: 1280px) {
+    main {
+      padding-right: 0rem;
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    aside {
+      height: 100%;
+      left: -100%;
+      width: 100%;
+      background-color: white;
+
+      li {
+        text-align: center;
+        max-width: 100%;
+      }
+    }
+
+    main {
+      padding-left: 0rem;
+    }
+    aside.open {
+      position: absolute;
+    }
+
+    #html-container {
+      h1 {
+        margin: 1rem 0;
+      }
+    }
+  }
 }
