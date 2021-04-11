@@ -1,12 +1,23 @@
 <main>
-  <aside [class]="(menuService.menuOpen$ | async) ? 'open' : 'closed'">
+  <aside
+    *ngIf="(ghRepoService.menuItems$ | async)?.length"
+    [class]="(menuService.menuOpen$ | async) ? 'open' : 'closed'"
+  >
     <ul>
       <li
         *ngFor="let voice of ghRepoService.menuItems$ | async"
         (click)="onMenuClick(voice)"
         [ngClass]="{ selected: voice === currentText }"
       >
-        {{ voice }}
+        <div class="page-list">
+          <fa-icon [icon]="home"></fa-icon>
+          <h3>{{ voice }}</h3>
+        </div>
+        <!-- <div class="section-list">
+          <div>section</div>
+          <div>section really really long title</div>
+          <div>section</div>
+        </div> -->
       </li>
     </ul>
   </aside>

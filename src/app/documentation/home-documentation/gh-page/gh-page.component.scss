@@ -1,0 +1,85 @@
+app-gh-page {
+  overflow: auto;
+  height: 100%;
+  width: 100%;
+  display: block;
+
+  #html-container {
+    padding: 0 1rem 1rem;
+    max-width: 900px;
+    margin: 0 auto;
+
+    table {
+      width: 100%;
+      border: 1px solid #dbdcdd;
+      border-radius: 3px;
+      text-align: left;
+      border-spacing: 0;
+      th {
+        font-weight: 700;
+        border-bottom: 1px solid #dbdcdd;
+        padding: 0.5rem 0 0.5rem 0.25rem;
+      }
+
+      td {
+        padding: 0.25rem;
+        border-bottom: 1px solid #f3f3f3;
+        word-break: break-word;
+      }
+
+      tr:last-child {
+        td {
+          border-bottom: none;
+        }
+      }
+    }
+    p {
+      margin: 0.5rem 0;
+      font-weight: 400;
+    }
+
+    li {
+      padding-bottom: 0.5rem;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      color: #464e5b;
+      font-weight: 700;
+      display: block;
+    }
+
+    h2 {
+      margin: 1.5rem 0 0.5rem;
+      font-size: 1.5rem;
+    }
+
+    h1 {
+      margin: 1.5rem 0 1rem;
+      font-size: 2.25rem;
+    }
+    ul,
+    ol {
+      font-weight: 400;
+      list-style: none;
+    }
+    img {
+      max-width: 100%;
+      width: auto !important;
+      margin: 0.5rem 0;
+      display: inline-block;
+      float: none !important;
+    }
+
+    p > code,
+    li > code,
+    h3 > code {
+      background-color: #f3f3f3;
+      font-family: monospace;
+      padding: 0 0.1rem;
+      border-radius: 3px;
+    }
+  }
+}

@@ -12,7 +12,8 @@ import { MenuService } from '../services/menu.service';
 export class NavbarComponent implements OnInit {
   iconMenu = faBars;
 
-  constructor(private menuService: MenuService, public ghRepoService: GhRepoService) { }
+  constructor(private menuService: MenuService,
+    public ghRepoService: GhRepoService) { }
 
   ngOnInit(): void {
   }

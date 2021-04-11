@@ -1,5 +1,9 @@
 <div class="d-flex">
-  <div (click)="onMenuClick()" class="btn">
+  <div
+    (click)="onMenuClick()"
+    *ngIf="(ghRepoService.menuItems$ | async)?.length"
+    class="btn"
+  >
     <fa-icon [icon]="iconMenu"></fa-icon>
   </div>
 

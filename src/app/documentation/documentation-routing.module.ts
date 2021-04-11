@@ -12,12 +12,12 @@ const routes: Routes = [
     resolve: { readme: Resolver },
     children: [
       {
-        path: ':section',
+        path: '',
         component: GhPageComponent
       },
       {
-        path: '**',
-        redirectTo: 'home',
+        path: ':section',
+        component: GhPageComponent
       }
     ]
   }

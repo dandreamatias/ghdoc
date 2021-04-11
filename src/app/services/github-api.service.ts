@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { GITHUB_API_URL } from '../utils/constants';
 import { map } from 'rxjs/operators';
-import { Observable, pipe } from 'rxjs';
+import { Observable } from 'rxjs';
 import { GithubReposContentModel } from '../models/github-repos-content.model';
 import { GitHubRepositoryInterface, GitHubSearchInterface } from '../models/github-search.model';
 

@@ -1,99 +1,103 @@
 app-home-documentation {
   width: 100%;
-  path {
-    color: white !important;
-  }
 
   main {
     display: flex;
     width: 100%;
-    padding-top: 3rem;
+    padding-top: 4rem;
     overflow-y: auto;
     height: 100%;
     transition: all 0.3s;
     background-color: white;
-    padding-right: 18rem;
-    padding-left: 18rem;
-  }
-
-  #html-container {
-    padding: 1rem;
-    max-width: 800px;
-    margin: 0 auto;
-    p {
-      margin: 0.5rem 0;
-      font-weight: 300;
-    }
-
-    li {
-      padding-bottom: 0.5rem;
-    }
-
-    h2 {
-      margin: 1.5rem 0 0.5rem;
-      font-size: 1.7rem;
-    }
-
-    h1 {
-      text-align: center;
-      margin: 2rem;
-      font-size: 2.5rem;
-    }
-    ul,
-    ol {
-      font-weight: 300;
-      list-style: none;
-    }
-    img {
-      max-width: 100%;
-      width: 100%;
-    }
-
-    p > code,
-    li > code,
-    h3 > code {
-      background-color: #f3f3f3;
-      font-family: monospace;
-      padding: 0 0.1rem;
-      border-radius: 3px;
-    }
-  }
-
-  aside {
-    overflow-y: auto;
-    overflow-x: hidden;
-    background-color: #f3f2f1;
-    position: absolute;
-    height: 100%;
-    width: 18rem;
-    left: 0;
-    transition: all 0.1s;
-
-    ul {
-      padding: 1rem 0.5rem;
-    }
-
-    li {
-      padding: 0.5rem;
-      margin-bottom: 2px;
-      border-radius: 3px;
-      cursor: pointer;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    li.selected {
-      font-weight: bold;
-    }
-
-    li:hover {
-      background-color: #e5e5e6;
-    }
+    overflow: hidden;
   }
 
   section {
     width: 100%;
   }
+
+  aside {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 100%;
+    left: 0;
+    min-width: 18rem;
+    background-color: #fafafa;
+    max-width: 22rem;
+
+    fa-icon {
+      background-color: #f3f3f3;
+      border-radius: 100%;
+      width: 2rem;
+      height: 2rem;
+      display: flex;
+      margin-right: 1rem;
+      justify-content: center;
+      align-items: center;
+    }
+
+    path {
+      color: #888888;
+      opacity: 0.7;
+      cursor: pointer;
+    }
+
+    ul {
+      padding: 1rem 2rem;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    li {
+      width: 100%;
+      color: #464e5b;
+      font-size: 1rem;
+      overflow: hidden;
+      margin-bottom: 0.5rem;
+    }
+
+    .page-list {
+      padding: 0.5rem 1.5rem 0.5rem 0rem;
+      display: flex;
+      justify-content: flex-start;
+      width: 100%;
+      align-items: center;
+      font-weight: 400;
+      text-overflow: ellipsis;
+      cursor: pointer;
+    }
+    .section-list {
+      width: calc(100% - 1rem);
+      font-weight: 300;
+      margin-left: 1rem;
+      text-overflow: ellipsis;
+      font-size: 0.9rem;
+      cursor: pointer;
+      padding-left: 2rem;
+      border-left: 1px solid #d3d3d3;
+    }
+
+    li.selected {
+      .page-list {
+        color: var(--main-color);
+        font-weight: 700;
+      }
+
+      fa-icon {
+        background-color: var(--main-color);
+      }
+
+      path {
+        color: white;
+        opacity: 1;
+      }
+    }
+
+    li:hover {
+      color: var(--main-color);
+    }
+  }
+
   .open {
     left: 0;
   }
@@ -115,8 +119,12 @@ app-home-documentation {
       background-color: white;
 
       li {
-        text-align: center;
+        text-align: left;
         max-width: 100%;
+      }
+
+      ul {
+        padding: 1rem;
       }
     }
 
@@ -125,6 +133,7 @@ app-home-documentation {
     }
     aside.open {
       position: absolute;
+      max-width: 100%;
     }
 
     #html-container {
@@ -135,41 +144,11 @@ app-home-documentation {
   }
   .open {
     left: 0;
+    position: relative;
   }
 
   .closed {
     left: -100%;
-  }
-  @media screen and (max-width: 1280px) {
-    main {
-      padding-right: 0rem;
-    }
-  }
-
-  @media screen and (max-width: 900px) {
-    aside {
-      height: 100%;
-      left: -100%;
-      width: 100%;
-      background-color: white;
-
-      li {
-        text-align: center;
-        max-width: 100%;
-      }
-    }
-
-    main {
-      padding-left: 0rem;
-    }
-    aside.open {
-      position: absolute;
-    }
-
-    #html-container {
-      h1 {
-        margin: 1rem 0;
-      }
-    }
+    position: absolute;
   }
 }

@@ -4,12 +4,15 @@ import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { GhRepoService } from '../services/gh-repo.service';
 import { GithubApiService } from '../services/github-api.service';
-import * as marked from "marked";
+import { MaskService } from '../services/mask.service';
 
 @Injectable()
 export class Resolver implements Resolve<string> {
   constructor(private ghApi: GithubApiService,
-    private ghRepo: GhRepoService) { }
+    private maskService: MaskService,
+    private ghRepo: GhRepoService) {
+    maskService.setHttpProgressStatus(true);
+  }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<string> {
     const [username, repo] = state.url.slice(1).split('/');
