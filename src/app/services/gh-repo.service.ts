@@ -96,6 +96,8 @@ export class GhRepoService {
 
     const dom = new DOMParser().parseFromString(marked(sanitizedRaw.join('\n')) as string, 'text/html');
     dom.body.querySelectorAll('pre').forEach(el => (hljs as any).highlightElement(el));
+    const tables = dom.body.querySelectorAll('table');
+    this.makeTableResponsive(tables)
     this.pages.set(titles[0], dom.body.outerHTML);
     this.menuItemsSubject.next(titles);
   }
@@ -120,6 +122,17 @@ export class GhRepoService {
         return row.slice(0, start - diff);
       }
       return row
+    });
+  }
+
+  private makeTableResponsive(tables: NodeList) {
+    tables.forEach(table => {
+      const divWrapper = document.createElement('div');
+      divWrapper.style.width = '100%';
+      divWrapper.style.overflow = 'auto';
+      table.parentElement.insertBefore(divWrapper, table);
+      table.parentElement.removeChild(table);
+      divWrapper.appendChild(table);
     });
   }
 

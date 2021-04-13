@@ -21,11 +21,11 @@ export class HomeDocumentationComponent implements OnInit {
     private cd: ChangeDetectorRef,
     public ghRepoService: GhRepoService) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
     this.ghRepoService.pages$.subscribe(res => {
       this.currentText = res.title ?? this.ghRepoService.firstPage;
       this.cd.detectChanges();
-    })
+    });
   }
 
   onMenuClick(menu) {
