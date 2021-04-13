@@ -18,12 +18,19 @@ app-gh-page {
       th {
         font-weight: 700;
         border-bottom: 1px solid #dbdcdd;
-        padding: 0.5rem 0 0.5rem 0.25rem;
+        border-right: 1px solid #dbdcdd;
+        padding: 0.6rem 0 0.6rem 0.4rem;
       }
 
       td {
-        padding: 0.25rem;
+        padding: 0.4rem;
         border-bottom: 1px solid #f3f3f3;
+        border-right: 1px solid #dbdcdd;
+      }
+
+      td:last-child,
+      th:last-child {
+        border-right: none;
       }
 
       tr:last-child {
