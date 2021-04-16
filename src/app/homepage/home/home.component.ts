@@ -1,6 +1,5 @@
-import { ChangeDetectionStrategy, Component, HostListener, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, HostListener, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
-import { faStar, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { map, tap } from 'rxjs/operators';
 import { GithubApiService } from 'src/app/services/github-api.service';
 import { GITHUB_URL } from 'src/app/utils/constants';
@@ -13,8 +12,6 @@ import { GITHUB_URL } from 'src/app/utils/constants';
 })
 export class HomeComponent implements OnInit {
   repositories
-  iconStar = faStar;
-  iconSearch = faSearch;
   showRes = false;
 
   constructor(private router: Router,

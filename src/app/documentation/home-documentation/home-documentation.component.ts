@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { faHome, faGenderless } from '@fortawesome/free-solid-svg-icons';
+import { Router } from '@angular/router';
 import { GhRepoService } from 'src/app/services/gh-repo.service';
 import { MenuService } from 'src/app/services/menu.service';
 
@@ -13,7 +12,6 @@ import { MenuService } from 'src/app/services/menu.service';
 })
 export class HomeDocumentationComponent implements OnInit {
   currentText: string;
-  home = faGenderless;
 
   constructor(
     public menuService: MenuService,

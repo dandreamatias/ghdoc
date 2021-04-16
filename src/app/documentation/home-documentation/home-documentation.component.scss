@@ -25,19 +25,16 @@ app-home-documentation {
     background-color: #fafafa;
     max-width: 22rem;
 
-    fa-icon {
+    i {
       background-color: #f3f3f3;
       border-radius: 100%;
       width: 2rem;
       height: 2rem;
       min-width: 2rem;
-      display: flex;
+      display: flex !important;
       margin-right: 1rem;
       justify-content: center;
       align-items: center;
-    }
-
-    path {
       color: #888888;
       opacity: 0.7;
       cursor: pointer;
@@ -84,11 +81,8 @@ app-home-documentation {
         font-weight: 700;
       }
 
-      fa-icon {
+      i {
         background-color: var(--main-color);
-      }
-
-      path {
         color: white;
         opacity: 1;
       }
